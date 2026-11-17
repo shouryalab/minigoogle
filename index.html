@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mini Google - Old Search vs PageRank</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="home">
+
+<div id="nav"><a href="#">Advanced Search</a><a href="#">Preferences</a><a href="#">Language Tools</a></div>
+
+<div id="top">
+  <a href="#" id="home-link" class="logo" aria-label="Mini Google home"><span class="b">G</span><span class="r">o</span><span class="y">o</span><span class="b">g</span><span class="g">l</span><span class="r">e</span><small>mini</small></a>
+  <div id="hello"></div>
+  <form id="f">
+    <input type="text" id="q" autocomplete="off" autofocus aria-label="Search the fake web">
+    <div class="btns">
+      <button type="submit">Mini Search</button>
+      <button type="button" id="how">How does it work?</button>
+    </div>
+    <div class="tips">Try:
+      <a href="#" data-q="pizza">pizza</a> -
+      <a href="#" data-q="cricket">cricket</a> -
+      <a href="#" data-q="laptop">laptop</a> -
+      <a href="#" data-q="pune food">pune food</a> -
+      <a href="#" data-q="chai tapri">chai tapri</a>
+    </div>
+  </form>
+</div>
+
+<div id="welcome">
+  <h2>Here's what this site does</h2>
+  <div class="wb">
+    <p>Mini Google is a tiny search engine that runs on a fake web. Search any word and it makes up some pages about it, then ranks them two different ways, side by side.</p>
+    <p><b>The old way</b> counts how many times a page repeats your word.<br>
+       <b>PageRank</b> counts who links to the page, and how important those pages are.</p>
+    <p>New here? Start with <a href="#" data-q="pizza">pizza</a> and watch the spam page fall. Then try any other word.</p>
+    <div class="counter">You are visitor number <span id="visits">000001</span></div>
+  </div>
+</div>
+
+<p id="bar"><span id="barL">Searching the demo web of 6 pages</span><span id="count"></span></p>
+
+<div id="verdict"></div>
+
+<div id="results" class="cols">
+  <div class="col">
+    <div class="hd old"><h2>Old method: count the keywords</h2>
+      <p>The page that says the word most often wins. Nobody checks who trusts it.</p></div>
+    <div id="oldList"></div>
+  </div>
+  <div class="col">
+    <div class="hd new"><h2>PageRank: count the votes</h2>
+      <p>A link is a vote. Votes from important pages count for more.</p></div>
+    <div id="prList"></div>
+  </div>
+</div>
+
+<div id="learn">
+  <h2 id="learnTitle">The tiny web behind the search</h2>
+  <p>Arrow A &rarr; B means "page A links to page B". Bigger circle = higher PageRank.
+     A red circle has no arrows pointing at it, so nobody vouches for that page.</p>
+  <div class="row">
+    <svg id="graph" viewBox="0 0 340 300" width="340" height="300" role="img" aria-label="Link graph of the six pages"></svg>
+    <div>
+      <table id="tbl"></table>
+      <p class="formula">PR(p) = (1 - d) / N + d &times; sum of PR(q) / links(q)<br>
+      d = 0.85, N = number of pages, q = every page linking to p</p>
+    </div>
+  </div>
+</div>
+
+<p class="foot">Mini Google - a school project - &copy; fake pages only. Edit <b>data.js</b> to add pages.</p>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
